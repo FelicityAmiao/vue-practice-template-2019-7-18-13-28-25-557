@@ -1,31 +1,31 @@
 <template>
   <div id="app">
-    <p>{{ count }}</p>
-    <button v-on:click="plus">点我+</button>
-    <button v-on:click="minus">点我-</button>
+    <counter v-on:plus="handlePlus" v-on:minus="handleMinus"></counter>
+
+    From Child:{{sum}}
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-
+import Counter from './components/Counter.vue'
 export default {
   name: 'app',
   data: function() {
     return {
-      count: 0
+      sum: 0,
+      counterCount: 3
     }
   },
   methods: {
-    plus: function () {
-      this.count++;
+    handlePlus: function(countEvery) {
+      this.sum = countEvery;
     },
-    minus: function() {
-      this.count--;
+    handleMinus: function(countEvery) {
+      this.sum = countEvery;
     }
   },
   components: {
-    // HelloWorld
+    Counter
   }
 }
 </script>
