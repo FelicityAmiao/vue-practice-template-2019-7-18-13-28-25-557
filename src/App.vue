@@ -3,7 +3,7 @@
     Input a number:
     <input type="text" v-model="counterCount"/>
     <div v-for="(item, index) in parseInt(counterCount)" v-bind:key="index">
-      <counter v-bind:index="index" v-on:plus="handlePlus" v-on:minus="handleMinus"></counter>
+      <counter v-bind:index="index" v-on:plus="acceptEveryCountAndcalculateSum" v-on:minus="acceptEveryCountAndcalculateSum"></counter>
     </div>
     Total Sum:{{sum}}
   </div>
@@ -21,11 +21,7 @@ export default {
     };
   },
   methods: {
-    handlePlus: function(countEvery, index) {
-      this.counterArray[index] = countEvery;
-      this.calculateSum();
-    },
-    handleMinus: function(countEvery, index) {
+    acceptEveryCountAndcalculateSum: function(countEvery, index) {
       this.counterArray[index] = countEvery;
       this.calculateSum();
     },
