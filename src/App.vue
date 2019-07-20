@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     Input a number:
-    <input type="text" v-model="counterCount"/>
+    <input type="text" v-model="counterCount" v-bind:onchange="changeCounterCount()"/>
     <div v-for="(item, index) in parseInt(counterCount)" v-bind:key="index">
       <counter v-bind:index="index" v-on:plus="acceptEveryCountAndcalculateSum" v-on:minus="acceptEveryCountAndcalculateSum"></counter>
     </div>
@@ -21,6 +21,12 @@ export default {
     };
   },
   methods: {
+    changeCounterCount: function() {
+      if(this.counterArray.length !== 0) {
+        this.counterArray.length = parseInt(this.counterCount);
+        this.calculateSum();
+      }
+    },
     acceptEveryCountAndcalculateSum: function(countEvery, index) {
       this.counterArray[index] = countEvery;
       this.calculateSum();
