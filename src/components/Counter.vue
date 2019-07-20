@@ -8,7 +8,7 @@
 <script>
 export default {
   name: "Counter",
-  props: [],
+  props: ["index"],
   data: function() {
     return {
       countEvery: 0
@@ -17,11 +17,11 @@ export default {
   methods: {
     plus: function() {
       this.countEvery++;
-      this.$emit("plus", this.countEvery);
+      this.$emit("plus", this.countEvery, this.index);
     },
     minus: function() {
       this.countEvery--;
-      this.$emit("minus", this.countEvery);
+      this.$emit("minus", this.countEvery, this.index);
     }
   }
 };
