@@ -2,9 +2,11 @@
   <div id="app">
     Input a number:
     <input type="text" v-model="counterCount" v-bind:onchange="changeCounterCount()"/>
-    <div v-for="(item, index) in parseInt(counterCount)" v-bind:key="index">
-      <counter v-bind:index="index" v-on:plus="acceptEveryCountAndcalculateSum" v-on:minus="acceptEveryCountAndcalculateSum"></counter>
-    </div>
+    <template v-if="counterCount">
+      <div v-for="(item, index) in parseInt(counterCount)" v-bind:key="index">
+        <counter v-bind:index="index" v-on:plus="acceptEveryCountAndcalculateSum" v-on:minus="acceptEveryCountAndcalculateSum"></counter>
+      </div>
+    </template>
     Total Sum:{{sum}}
   </div>
 </template>
