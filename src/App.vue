@@ -25,7 +25,7 @@ export default {
   methods: {
     changeCounterCount: function() {
       if(this.counterArray.length !== 0) {
-        this.counterArray.length = parseInt(this.counterCount);
+        this.counterArray.length = parseInt(this.counterCount)||0;
         this.calculateSum();
       }
     },
@@ -34,7 +34,7 @@ export default {
       this.calculateSum();
     },
     calculateSum: function() {
-      this.sum = this.counterArray.reduce((a, b) => a+b);
+      this.sum = this.counterArray.reduce((a, b) => a+b, 0);
     }
   },
   components: {
