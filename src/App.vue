@@ -1,27 +1,21 @@
 <template>
   <div id="app">
-    Input a number:
-    <input type="text" v-model="counterCount" />
-    <template v-if="counterCount">
-      <div v-for="(item, index) in parseInt(counterCount)" v-bind:key="index">
-        <counter></counter>
-      </div>
-    </template>
-    Total Sum:{{$store.state.count}}
+    <input-bar></input-bar>
+    <counter-group></counter-group>
+    <counter-sum></counter-sum>
   </div>
 </template>
 
 <script>
-import Counter from "./components/Counter.vue";
+import CounterGroup from "./components/CounterGroup.vue";
+import InputBar from "./components/InputBar.vue";
+import CounterSum from "./components/CounterSum.vue";
 export default {
   name: "app",
-  data: function() {
-    return {
-      counterCount: 3,
-    };
-  },
   components: {
-    Counter
+    CounterGroup,
+    InputBar,
+    CounterSum
   }
 };
 </script>
