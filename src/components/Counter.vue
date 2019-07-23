@@ -8,7 +8,6 @@
 <script>
 export default {
   name: "Counter",
-  props: ["index"],
   data: function() {
     return {
       countEvery: 0
@@ -17,12 +16,16 @@ export default {
   methods: {
     plus: function() {
       this.countEvery++;
-      this.$emit("plus", this.countEvery, this.index);
+      this.$store.commit("increment");
     },
     minus: function() {
       this.countEvery--;
-      this.$emit("minus", this.countEvery, this.index);
+      this.$store.commit("decrease");
     }
+  },
+  destroyed() {
+    this.$store.state.count -= this.countEvery;
+    this.countEvery = 0;
   }
 };
 </script>
